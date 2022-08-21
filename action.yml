@@ -1,0 +1,17 @@
+name: 'Create Issue List'
+description: 'Creates the markdown to insert the issue list into the readme file'
+#inputs:
+#  length:
+#    description:  'the amount of characters in the password. Defaults to 24'
+#    required: false
+#    default: '24'
+outputs:
+  mdOutput:
+    description: "the md to insert into markdown file"
+    value: "${{ steps.issuelist.outputs.mdOutput }}"
+runs:
+  using: "composite"
+  steps:
+    - id: issuelist
+      run: ${{ github.action_path }}/Set-IssueList.ps1 #-length ${{ inputs.length }}
+      shell: pwsh
