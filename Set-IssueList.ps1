@@ -25,3 +25,5 @@ Issue   | Status | Labels
 "@
 
 echo “::set-output name=mdOutput::$mdOutput"
+
+Out-File -InputObject $mdOutput -FilePath .\readme.md -Append
