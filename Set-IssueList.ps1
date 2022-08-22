@@ -26,4 +26,12 @@ Issue   | Status | Labels
 
 echo “::set-output name=mdOutput::$mdOutput"
 
-Out-File -InputObject $mdOutput -FilePath .\readme.md -Append
+$Readme = Get-Content ./README.md -Raw
+Write-Host "OldReadMe"
+$Readme
+$Regex = '(?s)<!-- ToDo -->.*'
+$NewReadme = $Readme -replace $Regex, $mdOutput
+Write-Host "exporting new Readme"
+Write-Host "New Readme"
+$NewReadme
+Set-Content -Path ./README.md -Value $NewReadme
