@@ -15,10 +15,10 @@
     #)
 
 
-gh issue list
-
+$issues = gh issue list --json title,state,body,labels
+<#
 $mdOutput = @"
-## Issue List Title
+## SAMPLE Issue List Title
 
 Issue   | Status | Labels
 --------|--------|---------
@@ -26,8 +26,22 @@ Issue   | Status | Labels
  Issue2 | Open   | work
  Issue3 | Open   | personal, bigone
 "@
+#>
 
-echo “::set-output name=mdOutput::$mdOutput"
+
+$mdOutput = @"
+## Todo List
+
+Issue   | Status
+--------|--------
+"@
+
+(ConvertFrom-Json $issues) | ForEach-Object {
+    #$mdOutput += ('<br> - {0}' -f $_.Title)
+    $mdOutput += (' <br> {0} | {1}' -f $_.Title, $_.State)
+}
+
+Write-Host $mdOutput
 
 $Readme = Get-Content ./README.md -Raw
 Write-Host "OldReadMe"

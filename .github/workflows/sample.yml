@@ -1,0 +1,25 @@
+name: Make todo list!
+on:
+  issues:
+    types: [opened, edited, closed]
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: createList
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: jpomfret/Issue-List@v0.6
+      - name: add-and-commit
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: todo list updated!
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
