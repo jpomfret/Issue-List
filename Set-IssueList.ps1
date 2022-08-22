@@ -14,6 +14,9 @@
     #    [int]$Length
     #)
 
+
+gh issue list
+
 $mdOutput = @"
 ## Issue List Title
 
