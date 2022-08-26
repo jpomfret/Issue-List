@@ -7,6 +7,8 @@ Github action to list issues on the readme
 
 Issue   | Status | Labels
 --------|--------|--------
+Issue-List: Filter by label | OPEN | Issue-List
+Issue-List: Ability to show just last X issues created | OPEN | Issue-List
 Test: Fire action on new issue | OPEN | PowerShell
 Test: New Issue | OPEN | documentation
 Blog: write a post | OPEN | blog, PowerShell
