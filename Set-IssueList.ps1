@@ -33,17 +33,20 @@ $mdOutput = @"
 <!-- ToDo -->
 ## Todo List
 
-Issue | Status <br> --------|-------- <br>
+Issue   | Status | Labels
+--------|--------|--------
+
 "@
 
 
 (ConvertFrom-Json $issues) | ForEach-Object {
     #$mdOutput += ('<br> - {0}' -f $_.Title)
     $mdOutput +=
-@"
-$($_.Title) | $($_.State)
+(@"
+{0} | {1} | {2}
 
-"@
+"@ -f$($_.Title), $_.State, ($_.labels.name -join ', '))
+
 }
 
 Write-Host $mdOutput
