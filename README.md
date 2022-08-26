@@ -7,6 +7,7 @@ Github action to list issues on the readme
 
 Issue   | Status | Labels
 --------|--------|--------
+Test: Fire action on new issue | OPEN | PowerShell
 Test: New Issue | OPEN | documentation
 Blog: write a post | OPEN | blog, PowerShell
 House: Fix the something | OPEN | house
