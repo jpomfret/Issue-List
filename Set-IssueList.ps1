@@ -33,8 +33,8 @@ $mdOutput = @"
 <!-- ToDo -->
 ## Todo List
 
-Issue   | Status
---------|--------`n
+Issue   | Status `n
+--------|--------
 "@
 
 
